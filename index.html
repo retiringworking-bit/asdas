@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PET TASHKENT</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+    
+    <!-- Overlay for mobile menu or modals -->
+    <div id="overlay" class="overlay hidden"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="ph-fill ph-paw-print"></i>
+            <span>PET TASHKENT</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#hero" class="nav-item active" data-i18n="nav_home">Home</a>
+            <a href="#sell" class="nav-item" data-i18n="nav_sell">Sell</a>
+            <a href="#rent" class="nav-item" data-i18n="nav_rent">Rent</a>
+            <a href="#sitter" class="nav-item" data-i18n="nav_sitter">Sitter</a>
+            <a href="#analytics" class="nav-item" data-i18n="nav_analytics">Analytics</a>
+            <a href="#contact" class="nav-item" data-i18n="nav_contact">Contact</a>
+        </div>
+        <div class="nav-actions">
+            <!-- Language Switcher -->
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+                <button class="lang-btn" onclick="setLanguage('ru')">RU</button>
+                <button class="lang-btn" onclick="setLanguage('uz')">UZ</button>
+            </div>
+            <!-- Theme Toggle -->
+            <button id="themeToggle" class="theme-btn">
+                <i class="ph ph-moon" id="themeIcon"></i>
+            </button>
+            <!-- Mobile Menu Toggle -->
+           
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1 data-i18n="hero_title">Eco-Friendly Pet Platform of Tashkent</h1>
+            <p data-i18n="hero_subtitle">Buy, Rent, or Find Care — All in One Place</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('sell')" data-i18n="hero_cta">Get Started Guide</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('contact')" data-i18n="hero_contact">Contact Us</button>
+            </div>
+        </div>
+        <div class="hero-visuals">
+            <!-- Placeholder for floating pet images -->
+            <div class="floating-circle circle-1"></div>
+            <div class="floating-circle circle-2"></div>
+            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=500" alt="Dog" class="floating-img img-1">
+            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=500" alt="Cat" class="floating-img img-2">
+        </div>
+    </section>
+
+    <!-- Sell Section -->
+    <section id="sell" class="section">
+        <div class="section-header">
+            <h2 data-i18n="sect_sell_title">Sell a Pet</h2>
+            <p data-i18n="sect_sell_desc">Find a new home for your lovely pets</p>
+        </div>
+        <div class="card-grid">
+            <div class="pet-card">
+                <img src="https://www.thesprucepets.com/thmb/F-6m45bLy1Ecu2p-egqup7BPVzI=/2124x0/filters:no_upscale():strip_icc()/GoldenPuppy185743593-56a9c1f23df78cf772aa4a33.jpg" alt="Pet">
+                <h3 data-i18n="pet_golden">Golden Retriever</h3>
+                <p>2 months old • Vaccinated</p>
+                <a href="https://t.me/pettashkent_channel"><button class="btn btn-outline" onclick="openModal('petModal', {name: 'Golden Retriever', price: '$500'})" data-i18n="btn_details">Details</button></a>
+            </div>
+            <div class="pet-card">
+                <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&q=80&w=400" alt="Pet">
+                <h3 data-i18n="pet_siamese">Siamese Cat</h3>
+                <p>1 year old • Trained</p>
+                <a href="https://t.me/pettashkent_channel"><button class="btn btn-outline" onclick="openModal('petModal', {name: 'Siamese Cat', price: '$200'})" data-i18n="btn_details">Details</button></a>
+            </div>
+            <div class="pet-card">
+                <img src="https://t3.ftcdn.net/jpg/00/85/11/74/360_F_85117445_ncTkLaOSfsDt8W62spH6FOjeYSE9gnRJ.jpg" alt="Pet">
+                <h3 data-i18n="pet_parrot">Parrot</h3>
+                <p>Colorful • Talkative</p>
+                <a href="https://t.me/pettashkent_channel"><button class="btn btn-outline" onclick="openModal('petModal', {name: 'Parrot', price: '$150'})" data-i18n="btn_details">Details</button></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rent Section -->
+    <section id="rent" class="section alt-bg">
+        <div class="section-header">
+            <h2 data-i18n="sect_rent_title">Rent a Pet</h2>
+            <p data-i18n="sect_rent_desc">Spend time with animals without full commitment</p>
+        </div>
+        <div class="card-grid">
+            <div class="service-card">
+                <div class="icon-box"><i class="ph ph-dog"></i></div>
+                <h3 data-i18n="rent_dog">Walk a Dog</h3>
+                <p data-i18n="rent_dog_desc">Great for exercise and fun.</p>
+                <span class="price">$10 / hour</span>
+                <button class="btn btn-primary" onclick="openModal('rentModal', {type: 'Dog Walking'})" data-i18n="btn_book">Book Now</button>
+            </div>
+            <div class="service-card">
+                <div class="icon-box"><i class="ph ph-cat"></i></div>
+                <h3 data-i18n="rent_cat">Cat Therapy</h3>
+                <p data-i18n="rent_cat_desc">Relax with a purring friend.</p>
+                <span class="price">$15 / hour</span>
+                <button class="btn btn-primary" onclick="openModal('rentModal', {type: 'Cat Therapy'})" data-i18n="btn_book">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sitter Section -->
+    <section id="sitter" class="section">
+        <div class="section-header">
+            <h2 data-i18n="sect_sitter_title">Find a Sitter</h2>
+            <p data-i18n="sect_sitter_desc">Trusted care for your pets while you are away</p>
+        </div>
+        <div class="sitter-list">
+            <div class="sitter-card">
+                <div class="sitter-img" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200')"></div>
+                <div class="sitter-info">
+                    <h4>Anna K.</h4>
+                    <div class="stars">★★★★★</div>
+                    <p data-i18n="sitter_exp_1">5 years experience with dogs and cats.</p>
+                </div>
+                <button class="btn btn-sm" onclick="openModal('contactModal', {subject: 'Sitter Anna K.'})" data-i18n="btn_contact">Contact</button>
+            </div>
+            <div class="sitter-card">
+                <div class="sitter-img" style="background-image: url('https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&q=80&w=200')"></div>
+                <div class="sitter-info">
+                    <h4>Aziz M.</h4>
+                    <div class="stars">★★★★☆</div>
+                    <p data-i18n="sitter_exp_2">Specialist in exotic birds.</p>
+                </div>
+                <button class="btn btn-sm" onclick="openModal('contactModal', {subject: 'Sitter Aziz M.'})" data-i18n="btn_contact">Contact</button>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Analytics Section -->
+    <section id="analytics" class="section">
+        <div class="section-header">
+            <h2 data-i18n="sect_analytics_title">Pet Analytics</h2>
+            <p data-i18n="sect_analytics_desc">Trends in Tashkent</p>
+        </div>
+        <div class="charts-container">
+            <div class="chart-box">
+                <h3 data-i18n="chart_adoption">Adoption Rates</h3>
+                <canvas id="adoptionChart"></canvas>
+            </div>
+            <div class="chart-box">
+                <h3 data-i18n="chart_types">Popular Pet Types</h3>
+                <canvas id="typesChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section alt-bg">
+        <div class="section-header">
+            <h2 data-i18n="sect_contact_title">Contact Us</h2>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Message Sent!');">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Message" required></textarea>
+            <button type="submit" class="btn btn-primary" data-i18n="btn_send">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 PET TASHKENT. All rights reserved.</p>
+    </footer>
+
+    <!-- Modals -->
+    <div id="petModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('petModal')">&times;</span>
+            <h2 id="modalPetName">Pet Name</h2>
+            <p id="modalPetPrice">Price</p>
+            <p data-i18n="modal_desc">This lovely pet is looking for a new home. Ensure you have the necessary environment.</p>
+            <button class="btn btn-primary" onclick="alert('Proceeding to payment...')" data-i18n="btn_buy_now">Buy Now</button>
+        </div>
+    </div>
+
+    <div id="rentModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('rentModal')">&times;</span>
+            <h2 id="modalRentType">Service</h2>
+            <p data-i18n="modal_rent_desc">Please select duration and confirm booking.</p>
+            <input type="date" class="form-input">
+            <button class="btn btn-primary" onclick="alert('Booking confirmed!')" data-i18n="btn_confirm">Confirm Booking</button>
+        </div>
+    </div>
+    
+    <div id="contactModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('contactModal')">&times;</span>
+            <h2 id="modalSubject">Contact</h2>
+            <input type="text" placeholder="Your Phone Number" class="form-input">
+            <button class="btn btn-primary" onclick="alert('Request sent!')" data-i18n="btn_request">Request Call</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="lang.js"></script>
+    <script src="theme.js"></script>
+    <script src="charts.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
